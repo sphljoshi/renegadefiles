@@ -1,0 +1,7 @@
+producers_section in acf-contents
+make acf fields in both options page and flexible layouts
+match the exact slugs of the acf fields
+style.css ma add styling if necessary
+upload location icon
+
+wp-content/uploads/2025/04/location.png
