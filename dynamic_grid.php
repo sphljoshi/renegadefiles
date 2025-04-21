@@ -3,11 +3,12 @@
 if (get_row_layout() == 'dynamic_grid') :
     $dynamic_grid_contents = get_sub_field('dynamic_grid_contents');
     $dynamic_grid_columns = get_sub_field('dynamic_grid_columns');
+    $section_title_size = get_sub_field('dynamic_grid_section_title_size')
 ?>
-    <section class="dynamic-grid-section" style="background-color: <?php echo esc_attr(get_sub_field('section_bg_color')); ?>">
+    <section class="dynamic-grid-section" style="background-color: <?php echo get_sub_field('section_bg_color'); ?>">
         <div class="container">
             <?php if (!empty(get_sub_field('dynamic_grid_section_title'))) { ?>
-                <h2 class="mb-5"><?php echo get_sub_field('dynamic_grid_section_title'); ?></h2>
+                <<?php echo ($section_title_size); ?> class="mb-5"><?php echo get_sub_field('dynamic_grid_section_title'); ?></<?php echo ($section_title_size); ?>>
                     <?php } ?>
 
                     <?php if (!empty(get_sub_field('dynamic_grid_section_content'))) { ?>
