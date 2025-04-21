@@ -4,7 +4,7 @@ if (get_row_layout() == 'dynamic_grid') :
     $dynamic_grid_contents = get_sub_field('dynamic_grid_contents');
     $dynamic_grid_columns = get_sub_field('dynamic_grid_columns');
 ?>
-    <section class="dynamic-grid-section">
+    <section class="dynamic-grid-section" style="background-color: <?php echo esc_attr(get_sub_field('section_bg_color')); ?>">
         <div class="container">
             <?php if (!empty(get_sub_field('dynamic_grid_section_title'))) { ?>
                 <h2 class="mb-5"><?php echo get_sub_field('dynamic_grid_section_title'); ?></h2>
@@ -30,8 +30,8 @@ if (get_row_layout() == 'dynamic_grid') :
                             if (empty($dynamic_grid_item_title) && empty($dynamic_grid_item_content) && empty($dynamic_grid_item_link_url)) {
                             } else {
                         ?>
-                                <div class="col-md-<?php echo $col_size; ?> text-center">
-                                    <div class="col-content card-muted d-flex flex-column h-100">
+                                <div class="col-md-<?php echo $col_size; ?> text-center mt-sm-4">
+                                    <div class="col-content card-muted h-100">
                                         <?php if (!empty($dynamic_grid_item_image['url'])) { ?>
                                             <div class="col-content-image mb-3">
                                                 <img src="<?php echo $dynamic_grid_item_image['url'];?>" alt="<?php echo $dynamic_grid_item_image['alt'];?>" style="width: 100px; height: auto">
@@ -49,7 +49,7 @@ if (get_row_layout() == 'dynamic_grid') :
                                         </div>
                                         <?php if (!empty($dynamic_grid_item_link_url)) { ?>
                                             <div class="btn primary-btn">
-                                                <a class="text-white" href="<?php echo esc_url($dynamic_grid_item_link_url); ?>" target="<?php echo esc_attr($dynamic_grid_item_link_target); ?>">
+                                                <a href="<?php echo esc_url($dynamic_grid_item_link_url); ?>" target="<?php echo esc_attr($dynamic_grid_item_link_target); ?>">
                                                         <span><?php echo $dynamic_grid_item_link_title; ?></span>
                                                 </a>
                                             </div>
