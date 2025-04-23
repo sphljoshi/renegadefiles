@@ -14,9 +14,6 @@ $industries = get_terms([
     'orderby' => 'name',
     'order' => 'ASC',
 ]);
-//Retreive the agnts based on the agent types and industries
-print_r($agent_types);
-print_r($industries);
 //Check if there are any agents
 
 if(!$agent_types || !$industries) {
@@ -25,8 +22,25 @@ if(!$agent_types || !$industries) {
 }
 ?>
 
+<!-- Retreive the agent_types and industries -->
+<ul>
+<?php foreach($agent_types as $agent_type) : ?>
+        <li class="" role="presentation">
+            <?php echo esc_html($agent_type->name); ?>
+        </li>
+    <?php endforeach; ?>
+</ul>
 
-<!-- HTML for the agents tabbed display -->
+<ul>
+    <?php foreach($industries as $industry) : ?>
+        <li class="" role="presentation">
+            <?php echo esc_html($industry->name); ?>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<!-- Display the agents in a tabbed format -->
+ 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <?php foreach($agent_types as $agent_type) : ?>
         <li class="nav-item" role="presentation">
@@ -35,7 +49,7 @@ if(!$agent_types || !$industries) {
     <?php endforeach; ?>
 </ul>
 <div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+  <div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <ul class="nav nav-pills">
             <?php foreach($industries as $industry) : ?>
                 <li class="nav-item" role="presentation">
@@ -43,7 +57,10 @@ if(!$agent_types || !$industries) {
                 </li>
             <?php endforeach; ?>
         </ul>
-        <div class="tab-content"></div>
+        <div class="tab-content">
+
+
+        </div>
   </div>
 </div>
 
