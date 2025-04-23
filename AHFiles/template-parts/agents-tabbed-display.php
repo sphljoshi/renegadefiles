@@ -49,7 +49,7 @@ if(!$agent_types || !$industries) {
     <?php endforeach; ?>
 </ul>
 <div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+  <div class="tab-pane fade " id="" role="tabpanel">
         <ul class="nav nav-pills">
             <?php foreach($industries as $industry) : ?>
                 <li class="nav-item" role="presentation">
@@ -58,8 +58,27 @@ if(!$agent_types || !$industries) {
             <?php endforeach; ?>
         </ul>
         <div class="tab-content">
-
-
+            <?php foreach($industries as $industry) : ?>
+                <div class="tab-pane fade">
+                <?php
+                    $agentsList = new WP_Query([
+                        'post_type' => 'agents',
+                        'tax_query' => [
+                            [
+                                'taxonomy' => 'agent_type',
+                                'field' => 'slug',
+                                'terms' => $agent_type->slug,
+                            ],
+                            [
+                                'taxonomy' => 'agent_industry',
+                                'field' => 'slug',
+                                'terms' => $industry->slug, 
+                            ],
+                        ]
+                    ]);
+                ?>
+                </div>
+            <?php endforeach; ?>
         </div>
   </div>
 </div>
