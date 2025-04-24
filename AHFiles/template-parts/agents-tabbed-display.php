@@ -63,7 +63,10 @@ if(!$agent_types || !$industries) {
                 <?php
                     $agentsList = new WP_Query([
                         'post_type' => 'agents',
+                        'orderby' => 'rand',
+                        'posts_per_page' => 6,
                         'tax_query' => [
+                            'relation' => 'AND',
                             [
                                 'taxonomy' => 'agent_type',
                                 'field' => 'slug',
@@ -76,6 +79,22 @@ if(!$agent_types || !$industries) {
                             ],
                         ]
                     ]);
+
+                    if($agentsList->have_posts()) {
+                        echo '<ul class="agent-list">';
+                        while($agentsList->have_posts()) {
+                            $agentsList -> the_post();
+                            echo '<li>';
+                            echo '<a href="' . get_the_permalink() . '">';
+                            echo '<h3>' . get_the_title() . '</h3>';
+                            echo '</a>';
+                            echo '</li>';
+                        }
+                        echo '</ul>';
+                        wp_reset_postdata();
+                    }else{
+                        echo '<div class="agent-tabs no-agents">No Agents Found</div>';
+                    }
                 ?>
                 </div>
             <?php endforeach; ?>
