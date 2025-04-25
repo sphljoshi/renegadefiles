@@ -1,0 +1,48 @@
+<div class="item-animate">
+    <div class="item__item-wrap">
+        <div class="item__item-in">
+            <span class="uk-h2">Life-Long Learners </span>
+            <span class="uk-h2">Learning Support </span>
+            <span class="uk-h2">Innovative Spirit </span> 
+            <span class="uk-h2">State-of-the-art Facilities </span>
+            <span class="uk-h2">Life-Long Learners </span>
+            <span class="uk-h2">Learning Support </span>
+            <span class="uk-h2">Innovative Spirit </span> 
+            <span class="uk-h2">State-of-the-art Facilities </span>
+        </div>
+    </div>
+</div>
+
+<style>
+   .item-animate {
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    height: 52px;
+    padding: 10px 0;}
+
+    .item-animate .item__item-wrap {
+    animation: marquee 50s linear infinite;
+    will-change: transform;
+    position: absolute;
+    z-index: 2;
+    top: .7rem;
+    }
+
+    .item-animate span {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0px 20px;
+}
+@keyframes marquee {
+    0% {
+    transform: translateX(0);
+}
+100% {
+    transform: translateX(-50%);
+}
+}
+</style>
