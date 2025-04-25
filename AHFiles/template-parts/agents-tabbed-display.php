@@ -62,7 +62,7 @@ if(!$agent_types || !$industries) {
                 <div class="tab-pane fade">
                 <?php
                     $agentsList = new WP_Query([
-                        'post_type' => 'agents',
+                        'post_type' => 'agent',
                         'orderby' => 'rand',
                         'posts_per_page' => 6,
                         'tax_query' => [
