@@ -1,23 +1,26 @@
 <?php
 if (get_row_layout() == 'policy_slider') :
-  $section_heading = get_sub_field('section_heading');
+  $section_heading = get_sub_field('section_heading_for_panel');
   $policy_listing = get_sub_field('policy_listing'); ?>
-  <section class="agency-logo-slider">
+  <section class="section-muted section-padding">
     <div class="container">
       <?php
       if ($section_heading != '') { ?>
-        <h2>
+      <div class="common-secondary-head">
+        <h3>
           <?php echo $section_heading; ?>
-        </h2><?php
+        </h3>
+        </div><?php
             }
-            if ($carrier_listing) { ?>
+            if ($policy_listing) { ?>
         <div class="agency-logo-wrap">
           <?php
-              foreach ($carrier_listing as $row) {
-                if ($row['carrier_logo'] && $row['carrier_logo'] != '') {
-                  $url = ($row['carrier_link']) ? $row['carrier_link'] : 'javascript:void(0)'; ?>
-              <a href="<?php echo $url; ?>" aria-label="<?php echo $row['carrier_logo']['alt']; ?>">
-                <img src="<?php echo $row['carrier_logo']['url']; ?>" alt="<?php echo $row['carrier_logo']['alt']; ?>">
+              foreach ($policy_listing as $row) {
+                if ($row['policy_icon'] && $row['policy_icon'] != '') {
+                  $url = ($row['policy_link']['url']) ? $row['policy_link']['url'] : 'javascript:void(0)'; ?>
+              <a href="<?php echo $url; ?>" aria-label="<?php echo $row['policy_icon']['alt']; ?>">
+                <img src="<?php echo $row['policy_icon']['url']; ?>" alt="<?php echo $row['policy_icon']['alt']; ?>">
+                <span><?php echo $row['policy_title']; ?></span>
               </a><?php
                 }
               } ?>
