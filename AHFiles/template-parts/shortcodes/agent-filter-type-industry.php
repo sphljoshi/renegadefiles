@@ -43,7 +43,7 @@ add_shortcode('agent_tabs', function() {
                 let selectedIndustry = '';
 
                 function loadIndustries(typeSlug) {
-                    industryTabsContainer.innerHTML = '<div></div>';
+                    industryTabsContainer.innerHTML = '<li>Loading...</li>';
                     fetch('<?php echo admin_url('admin-ajax.php'); ?>?action=load_industries_by_type&type=' + typeSlug)
                         .then(response => response.json())
                         .then(data => {
@@ -52,6 +52,7 @@ add_shortcode('agent_tabs', function() {
                                 data.forEach(function(industry) {
                                     html += '<li><a href="#" class="btn-tab" data-industry="'+industry.slug+'">'+industry.name+'</a></li>';
                                 });
+                                html += '<li><a href="" class="btn-tab btn-tab-more">More</a></li>'
                                 industryTabsContainer.innerHTML = html;
 
                                 // Attach click event to new industry tabs
