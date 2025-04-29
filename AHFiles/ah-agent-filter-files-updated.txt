@@ -1,0 +1,4 @@
+agencyheight/inc/ajaxfunctions.php (Load Industries by Type from line 604)
+agencyheight/functions.php (include(get_stylesheet_directory() . '/shortcodes/agent-filter-type-industry.php')
+agencyheight/inc/custom-functions.php (Register Post type)
+creta a new file agent-filter-type-industry.php inside (agencyheight/shortcodes)
