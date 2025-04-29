@@ -48,7 +48,7 @@ if(!$agent_types || !$industries) {
         </li>
     <?php endforeach; ?>
 </ul>
-<div class="tab-content" id="nav-tabContent">
+<div class="tab-content" id="myTabContent">
   <div class="tab-pane fade " id="" role="tabpanel">
         <ul class="nav nav-pills">
             <?php foreach($industries as $industry) : ?>
