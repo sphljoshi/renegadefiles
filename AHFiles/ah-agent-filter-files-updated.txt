@@ -1,4 +1,20 @@
+[Home page Template]
+[tpl-home-page-ah-reimagined.php]
+
+[Agents Tabbed Filter]
+[
 agencyheight/inc/ajaxfunctions.php (Load Industries by Type from line 604)
 agencyheight/functions.php (include(get_stylesheet_directory() . '/shortcodes/agent-filter-type-industry.php')
 agencyheight/inc/custom-functions.php (Register Post type)
-creta a new file agent-filter-type-industry.php inside (agencyheight/shortcodes)
+create a new file agent-filter-type-industry.php inside (agencyheight/shortcodes) for displayed using shortcode
+]
+
+[ACF]
+[Create acf field group agent_tabs and create required acf fields refer to staging website]
+
+[Style]
+[add css in style.css refer to staging website]
+
+[Form Agency signup]
+[Display Heading and Sub Heading ACF Group in AH reimagined]
+[upload agency-signup.php]

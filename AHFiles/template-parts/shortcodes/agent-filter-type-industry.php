@@ -10,11 +10,20 @@ add_shortcode('agent_tabs', function() {
         'hide_empty' => true,
         'order' => 'ASC'
     ]);
-
+	$section_heading = get_sub_field('section_heading');
     if (!empty($types) && !is_wp_error($types)) :
     ?>
+		
         <div class="agent-tabs">
+        <div class="d-flex justify-content-between mb-5">
+        <!-- Section Heading -->
+        <?php if (!empty($section_heading)) {?>
+          <div class="common-secondary-head">
+            <h4 class="text-primary"><?php echo $section_heading;?></h4>
+          </div>
+        <?php }?>
             <!-- Type Tabs -->
+            <div>
             <ul class="agent-type-tab-buttons">
                 <?php foreach ($types as $index => $type) : ?>
                     <li class="<?php echo $index === 0 ? 'active' : ''; ?>">
@@ -24,13 +33,16 @@ add_shortcode('agent_tabs', function() {
                     </li>
                 <?php endforeach; ?>
             </ul>
-
+        </div>
+        </div>
             <!-- Industry Tabs (dynamic) -->
-            <ul class="agent-industry-tab-buttons" style="margin-top: 15px;"></ul>
-
+            <div class="d-flex" style="gap:16px">
+                <ul class="agent-industry-tab-buttons mb-0"></ul><!-- Will Load via JS-->
+                <ul style="padding: 0; margin:0; list-style: none; align-self: center"><li><a href="https://agents.agencyheight.com" target="blank" class="btn-tab btn-tab-more">More</a></li></ul>
+            </div>
             <!-- Content area -->
-            <div id="agent-tab-content">
-                <p>Loading agents...</p> <!-- Will load via JS -->
+            <div id="agent-tab-content" class="mt-5">
+                <p><div class="spinner"></div></p> <!-- Will load via JS -->
             </div>
         </div>
             <script>
@@ -43,7 +55,7 @@ add_shortcode('agent_tabs', function() {
                 let selectedIndustry = '';
 
                 function loadIndustries(typeSlug) {
-                    industryTabsContainer.innerHTML = '<li>Loading...</li>';
+                    industryTabsContainer.innerHTML = '<li></li>';
                     fetch('<?php echo admin_url('admin-ajax.php'); ?>?action=load_industries_by_type&type=' + typeSlug)
                         .then(response => response.json())
                         .then(data => {
@@ -52,7 +64,7 @@ add_shortcode('agent_tabs', function() {
                                 data.forEach(function(industry) {
                                     html += '<li><a href="#" class="btn-tab" data-industry="'+industry.slug+'">'+industry.name+'</a></li>';
                                 });
-                                html += '<li><a href="" class="btn-tab btn-tab-more">More</a></li>'
+                                //html += '<a href="https://agents.agencyheight.com" class="btn-tab btn-tab-more">More</a>'
                                 industryTabsContainer.innerHTML = html;
 
                                 // Attach click event to new industry tabs
@@ -64,7 +76,7 @@ add_shortcode('agent_tabs', function() {
                 }
 
                 function loadAgents(typeSlug, industrySlug) {
-                    contentArea.innerHTML = '<div>Spinner Animation</div>';
+                    contentArea.innerHTML = '<div class="spinner"></div>';
                     fetch('<?php echo admin_url('admin-ajax.php'); ?>?action=load_agents_by_type_and_industry&type=' + typeSlug + '&industry=' + industrySlug)
                         .then(response => response.text())
                         .then(data => {
